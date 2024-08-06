@@ -1,0 +1,48 @@
+ubuntu $ sudo adduser nastiadamian
+Adding user `nastiadamian' ...
+Adding new group `nastiadamian' (1001) ...
+Adding new user `nastiadamian' (1001) with group `nastiadamian' ...
+Creating home directory `/home/nastiadamian' ...
+Copying files from `/etc/skel' ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for nastiadamian
+Enter the new value, or press ENTER for the default
+        Full Name []: anastasiia
+        Room Number []: 1
+        Work Phone []: 0987654321
+        Home Phone []: 334455
+        Other []: 
+Is the information correct? [Y/n] y
+ubuntu $ exit
+
+ubuntu $ sudo usermod -aG sudo nastiadamian
+ubuntu $ su - nastiadamian
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+nastiadamian@ubuntu:~$ sudo whoami
+[sudo] password for nastiadamian: 
+root
+nastiadamian@ubuntu:~$ mkdir /home/nastiadamian/nastia
+nastiadamian@ubuntu:~$ touch /home/nastiadamian/nastia/damian.txt
+nastiadamian@ubuntu:~$ ln -s /home/nastiadamian/nastia/damian.txt /home/nastiadamian/damian_link.txt
+nastiadamian@ubuntu:~$ sudo cp /home/nastiadamian/nastia/damian.txt /damian.txt
+nastiadamian@ubuntu:~$ sudo chown root:root /damian.txt
+nastiadamian@ubuntu:~$ sudo chmod 644 /damian.txt
+nastiadamian@ubuntu:~$ id nastiadamian
+uid=1001(nastiadamian) gid=1001(nastiadamian) groups=1001(nastiadamian),27(sudo)
+nastiadamian@ubuntu:~$ ls -l /home/nastiadamian/damian_link.txt
+lrwxrwxrwx 1 nastiadamian nastiadamian 36 Aug  6 15:14 /home/nastiadamian/damian_link.txt -> /home/nastiadamian/nastia/damian.txt
+nastiadamian@ubuntu:~$ ls -l /damian.txt
+-rw-r--r-- 1 root root 0 Aug  6 15:14 /damian.txt
+nastiadamian@ubuntu:~$ ls -l /home/nastiadamian/nastia
+total 0
+-rw-rw-r-- 1 nastiadamian nastiadamian 0 Aug  6 15:13 damian.txt
+nastiadamian@ubuntu:~$ ls -ld /home/nastiadamian
+drwxr-xr-x 3 nastiadamian nastiadamian 4096 Aug  6 15:14 /home/nastiadamian
+nastiadamian@ubuntu:~$ ls -l /home/nastiadamian/damian_link.txt
+lrwxrwxrwx 1 nastiadamian nastiadamian 36 Aug  6 15:14 /home/nastiadamian/damian_link.txt -> /home/nastiadamian/nastia/damian.txt
+nastiadamian@ubuntu:~$ 
+
